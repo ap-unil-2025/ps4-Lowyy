@@ -21,6 +21,7 @@ def create_number_list(start, end):
     """
     # TODO: Implement this function
     # Hint: Use range() and convert to list
+    return list(range(start,end + 1))
     pass
 
 
@@ -40,6 +41,7 @@ def filter_even_numbers(numbers):
     """
     # TODO: Implement this function
     # You can use a loop or list comprehension
+    return [x for x in numbers if x%2 == 0]
     pass
 
 
@@ -59,6 +61,7 @@ def square_numbers(numbers):
     """
     # TODO: Implement this function
     # Hint: Try a list comprehension!
+    return [x**2 for x in numbers]
     pass
 
 
@@ -78,6 +81,7 @@ def find_max_min(numbers):
     """
     # TODO: Implement this function
     # You can use max() and min() built-in functions
+    return (max(numbers), min(numbers))
     pass
 
 
@@ -98,6 +102,12 @@ def remove_duplicates(items):
     # TODO: Implement this function
     # Hint: You can use a loop and check if item is already in result list
     # Or convert to set and back to list (but this doesn't preserve order)
+    l = list()
+    for item in items:
+        if item not in l:
+            l.append(item)
+    
+    return l
     pass
 
 
@@ -121,6 +131,14 @@ def merge_lists(list1, list2):
     """
     # TODO: Implement this function
     # Hint: Use a loop with index, handle different lengths
+    new_list = list()
+    for x in range(max(len(list1),len(list2))):
+        if x < len(list1):
+            new_list.append(list1[x])
+        if x < len(list2):
+            new_list.append(list2[x])
+    
+    return new_list
     pass
 
 
@@ -143,6 +161,7 @@ def list_statistics(numbers):
 
     # TODO: Implement this function
     # Calculate and return a dictionary with the statistics
+    return {'sum': sum(numbers), 'average': sum(numbers)/len(numbers), 'count': len(numbers), 'max': max(numbers), 'min': min(numbers)}
     pass
 
 
@@ -163,8 +182,13 @@ def chunk_list(items, chunk_size):
     """
     # TODO: Implement this function
     # Hint: Use list slicing in a loop
-    pass
+    new_list = list()
+    for x in range(0, len(items), chunk_size):
+        new_list.append(items[x:x+chunk_size])
+    
 
+    return new_list
+    pass
 
 # Test cases
 if __name__ == "__main__":
